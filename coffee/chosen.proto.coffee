@@ -32,6 +32,7 @@ class @Chosen extends AbstractChosen
 
     @search_field = @container.down('input')
     @search_results = @container.down('ul.chosen-results')
+    if @split_results_separator then @search_results.addClassName('chosen-results-split')
     this.search_field_scale()
 
     @search_no_results = @container.down('li.no-results')

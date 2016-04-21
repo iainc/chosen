@@ -34,6 +34,7 @@ class AbstractChosen
     @include_group_label_in_selected = @options.include_group_label_in_selected || false
     @max_shown_results = @options.max_shown_results || Number.POSITIVE_INFINITY
     @case_sensitive_search = @options.case_sensitive_search || false
+    @split_results_separator = @options.split_results_separator || false
 
   set_default_text: ->
     if @form_field.getAttribute("data-placeholder")
@@ -106,8 +107,16 @@ class AbstractChosen
     option_el.className = classes.join(" ")
     option_el.style.cssText = option.style
     option_el.setAttribute("data-option-array-index", option.array_index)
-    option_el.innerHTML = option.search_text
     option_el.title = option.title if option.title
+
+    if @split_results_separator
+      separatedText = option.search_text.split(@split_results_separator)
+      result = ''
+      for value in separatedText
+        result += '<span>' + value + '</span>'
+      option_el.innerHTML = result
+    else
+      option_el.innerHTML = option.search_text
 
     this.outerHTML(option_el)
 
@@ -298,4 +307,3 @@ class AbstractChosen
   @default_multiple_text: "Select Some Options"
   @default_single_text: "Select an Option"
   @default_no_result_text: "No results match"
-

@@ -51,6 +51,7 @@ class Chosen extends AbstractChosen
 
     @search_field = @container.find('input').first()
     @search_results = @container.find('ul.chosen-results').first()
+    if @split_results_separator then @search_results.addClass('chosen-results-split')
     this.search_field_scale()
 
     @search_no_results = @container.find('li.no-results').first()
