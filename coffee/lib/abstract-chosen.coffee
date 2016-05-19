@@ -113,7 +113,7 @@ class AbstractChosen
       separatedText = option.search_text.split(@split_results_separator)
       result = ''
       for value in separatedText
-        result += '<span>' + value + '</span>'
+        result += '<span>' + value.trim() + '</span>'
       option_el.innerHTML = result
     else
       option_el.innerHTML = option.search_text
