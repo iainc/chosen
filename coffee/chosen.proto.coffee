@@ -506,3 +506,6 @@ class @Chosen extends AbstractChosen
         w = f_width - 10
 
       @search_field.setStyle({'width': w + 'px'})
+
+  wrap_text_in_span: (text) ->
+    '<span>' + text.strip() + '</span>'

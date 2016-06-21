@@ -512,3 +512,6 @@ class Chosen extends AbstractChosen
         w = f_width - 10
 
       @search_field.css({'width': w + 'px'})
+
+  wrap_text_in_span: (text) ->
+    '<span>' + $.trim(text) + '</span>'
